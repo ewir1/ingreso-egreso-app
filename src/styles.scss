@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.input-group-append {
+    display: block !important;
+    height: 100%;
+    .input-group-text {
+        display: block !important;
+    }
+}
+
+.cursor {
+    cursor: pointer;
+}
