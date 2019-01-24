@@ -8,6 +8,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -16,6 +20,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AppReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
   AngularFirestoreModule,
   AngularFireAuthModule,
   AngularFireModule.initializeApp(environment.firebase),
+  StoreModule.forRoot(AppReducers),
+  StoreDevtoolsModule.instrument({
+    maxAge: 25,
+    logOnly: environment.production,
+  })
   ],
   providers: [],
   bootstrap: [AppComponent],
